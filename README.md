@@ -1,19 +1,13 @@
 # Portfolio
 
-Ruby on Rails application to be cloud hosted.
+> Ruby on Rails 5 application to be cloud hosted.
 
-* Ruby version: 2.5
+> The application allows users to create their own portfolios.
 
-* System dependencies
+### Features
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Realtime chat engine for comments
+- Blog
+- Portfolio
+- Drag and Drop Interface
+- Etc
