@@ -29,7 +29,6 @@ def edit
   @portfolio = Portfolio.find(params[:id])
 end
 
-
 # PATCH/PUT /portfolios/1
 # PATCH/PUT /posrtfolios/1.json
 def update
@@ -49,8 +48,16 @@ def show
   @portfolio = Portfolio.find(params[:id])
 end
 
-
-
+# DELETE /portfolios/1
+# DELETE /portfolios/1.json
+def destroy
+  @portfolio = Portfolio.find(params[:id])
+  @portfolio.destroy
+  respond_to do |format|
+    format.html { redirect_to portfolios_url, notice: 'The portfolio was successfully deleted.' }
+    format.json { head :no_content }
+  end
+end
 
 
 
