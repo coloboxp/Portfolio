@@ -18,7 +18,7 @@ def create
 
   respond_to do |format|
     if @portfolio.save
-      #format.html { redirect_to @portfolio, notice: 'Your portfolio item is now live.' }
+      # format.html { redirect_to @portfolio, notice: 'Your portfolio item is now live.' }
       format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
       format.json { render :show, status: :created, location: @portfolio }
     else
@@ -33,7 +33,7 @@ def edit
 end
 
 # PATCH/PUT /portfolios/1
-# PATCH/PUT /posrtfolios/1.json
+# PATCH/PUT /portfolios/1.json
 def update
   @portfolio = Portfolio.find(params[:id])
   respond_to do |format|

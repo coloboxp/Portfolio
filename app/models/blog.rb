@@ -4,7 +4,7 @@ class Blog < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  validates_presence_of :title, :body, :main_image, :thumb_image
+  validates_presence_of :title, :body
 
   belongs_to :topic
 end
