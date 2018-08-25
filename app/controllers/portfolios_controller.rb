@@ -1,10 +1,10 @@
 class PortfoliosController < ApplicationController
 
 def index
-  @portfolioItems = Portfolio.all
+  @portfolio_items = Portfolio.all
 
-  #@portfolioItems.angular
-  #@portfolioItems.ruby_on_rails_portfolio_items
+  # portfolio_items.angular
+  # portfolio_items.ruby_on_rails_portfolio_items
 end
 
 def new
