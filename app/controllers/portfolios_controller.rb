@@ -9,12 +9,15 @@ end
 
 def new
   @portfolio = Portfolio.new
+
+  3.times { @portfolio.technologies.build }
 end
 
 # POST /portfolio
 # POST /portfolio.json
 def create
-  @portfolio = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+  @portfolio = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body,
+                                                               technologies_attributes: [:name]))
 
   respond_to do |format|
     if @portfolio.save
