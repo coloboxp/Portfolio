@@ -1,21 +1,27 @@
 class PortfoliosController < ApplicationController
 
 def index
-  @portfolioItems = Portfolio.all
+  @portfolio_items = Portfolio.all
+
+  # portfolio_items.angular
+  # portfolio_items.ruby_on_rails_portfolio_items
 end
 
 def new
   @portfolio = Portfolio.new
+
+  3.times { @portfolio.technologies.build }
 end
 
 # POST /portfolio
 # POST /portfolio.json
 def create
-  @portfolio = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+  @portfolio = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body,
+                                                               technologies_attributes: [:name]))
 
   respond_to do |format|
     if @portfolio.save
-      #format.html { redirect_to @portfolio, notice: 'Your portfolio item is now live.' }
+      # format.html { redirect_to @portfolio, notice: 'Your portfolio item is now live.' }
       format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
       format.json { render :show, status: :created, location: @portfolio }
     else
@@ -30,7 +36,7 @@ def edit
 end
 
 # PATCH/PUT /portfolios/1
-# PATCH/PUT /posrtfolios/1.json
+# PATCH/PUT /portfolios/1.json
 def update
   @portfolio = Portfolio.find(params[:id])
   respond_to do |format|

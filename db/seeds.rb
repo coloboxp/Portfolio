@@ -6,32 +6,77 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Topic.create!(title: 'Generic')
+Topic.create!(title: 'Software Engineering')
+Topic.create!(title: 'Another topic')
+
+puts '3 Topics created'
+
+CourseType.create!(title: 'Technical')
+CourseType.create!(title: 'Machine Learning')
+CourseType.create!(title: 'BI')
+CourseType.create!(title: 'Management')
+
+puts '4 Course Types created'
+puts rand(Topic.first.id << Topic.last.id)
+
 10.times do |x|
+  id = rand(Topic.first.id << Topic.last.id - 1)
+
+  id = id < Topic.first.id ? 1 : id
+  id = id > Topic.last.id ? Topic.last.id : id
+
+  puts "blog #{x} with topic id: #{id}"
   Blog.create!(
     title: "My title #{x}",
-    body: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+    body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+    topic_id: id
   )
 end
 
-puts "10 blog posts created"
+puts '10 blog posts created'
 
 5.times do |y|
   Skill.create!(
     title: "Skill ##{y}",
     percent_utilized: 15
-    )
-end
-
-puts "5 skills created"
-
-9.times do |i|
-  Portfolio.create!(
-    title: "Title #{i}",
-    subtitle: "subtitle",
-    body: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-    main_image: "https://place-hold.it/600x400",
-    thumb_image: "https://place-hold.it/350x200"
   )
 end
 
-puts "9 portfolio items created"
+puts '5 skills created'
+
+8.times do |i|
+  Portfolio.create!(
+    title: "Title #{i}",
+    subtitle: 'Ruby on Rails',
+    body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+    main_image: 'https://place-hold.it/600x400',
+    thumb_image: 'https://place-hold.it/350x200'
+  )
+end
+
+Portfolio.create!(
+  title: 'Title 9',
+  subtitle: 'Angular',
+  body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+  main_image: 'https://place-hold.it/600x400',
+  thumb_image: 'https://place-hold.it/350x200'
+)
+
+puts '9 portfolio items created'
+
+3.times do |tech_id|
+  Portfolio.last.technologies.create!(
+    name: "Technology #{tech_id}",
+    portfolio_id: Portfolio.last.id
+  )
+end
+
+# 3.times do |tech_id|
+#   Technology.create!(
+#     name: "Technology #{tech_id}",
+#     portfolio_id: Portfolio.last.id
+#   )
+# end
+
+puts '3 technologies created'
