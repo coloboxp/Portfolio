@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevcampPortfolio</title>
+    <title>DevcampPortfolio <%= "(#{current_user.first_name})" if current_user %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <!--  #temporary -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if current_user %>
+      <%= link_to "Logout #{current_user.first_name}...", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path, method: :get %> |
+      <%= link_to "Register", new_user_registration_path, method: :get %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
