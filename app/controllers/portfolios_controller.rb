@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-
+before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
 def index
   @portfolio_items = Portfolio.all
 
@@ -16,8 +16,7 @@ end
 # POST /portfolio
 # POST /portfolio.json
 def create
-  @portfolio = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body,
-                                                               technologies_attributes: [:name]))
+  @portfolio = Portfolio.new(portfolio_params)
 
   respond_to do |format|
     if @portfolio.save
@@ -32,15 +31,15 @@ def create
 end
 
 def edit
-  @portfolio = Portfolio.find(params[:id])
+#  @portfolio = Portfolio.find(params[:id])
 end
 
 # PATCH/PUT /portfolios/1
 # PATCH/PUT /portfolios/1.json
 def update
-  @portfolio = Portfolio.find(params[:id])
+#  @portfolio = Portfolio.find(params[:id])
   respond_to do |format|
-    if @portfolio.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+    if @portfolio.update(portfolio_params)
       format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully updated.' }
       format.json { render :show, status: :ok, location: @portfolio }
     else
@@ -51,13 +50,13 @@ def update
 end
 
 def show
-  @portfolio = Portfolio.find(params[:id])
+#  @portfolio = Portfolio.find(params[:id])
 end
 
 # DELETE /portfolios/1
 # DELETE /portfolios/1.json
 def destroy
-  @portfolio = Portfolio.find(params[:id])
+#  @portfolio = Portfolio.find(params[:id])
   @portfolio.destroy
   respond_to do |format|
     format.html { redirect_to portfolios_url, notice: 'The portfolio was successfully deleted.' }
@@ -65,11 +64,18 @@ def destroy
   end
 end
 
+private
 
+# Use callbacks to share common setup or constraints between actions.
+def set_portfolio
+  @portfolio = Portfolio.find(params[:id])
+end
 
-
-
-
-
-
+# Never trust parameters from the scary internet, only allow the white list through.
+def portfolio_params
+  params.require(:portfolio).permit(:title,
+                                    :subtitle,
+                                    :body,
+                                    technologies_attributes: [:name])
+end
 end
