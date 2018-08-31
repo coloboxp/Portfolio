@@ -3,9 +3,14 @@
 <em><%= @portfolio.subtitle %></em>
 <p><%= @portfolio.body %></p>
 
+<% if  @portfolio.technologies.any? %>
+
 <h2>Technologies Used</h2>
-<% @portfolio.technologies.each do |t| %>
-  <p><%= t.name %></p>
+  <% @portfolio.technologies.each do |t| %>
+    <p><%= t.name %></p>
+  <% end %>
+  <% else %>
+  <p> - </p>
 <% end %>
 <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
 <%= link_to 'Back', portfolios_path %>
