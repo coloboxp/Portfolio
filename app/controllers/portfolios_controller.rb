@@ -34,6 +34,8 @@ end
 
 def edit
 #  @portfolio = Portfolio.find(params[:id])
+# To be replaced with JavaScript :
+  #3.times { @portfolio.technologies.build }
 end
 
 # PATCH/PUT /portfolios/1
