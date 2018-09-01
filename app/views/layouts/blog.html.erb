@@ -15,14 +15,8 @@
     <p class="alert"><%= alert %></p>
 
     <div>
-    <% if current_user.is_a?(User) %>
-      <%= link_to "Logout #{current_user.first_name}...", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path, method: :get %> |
-      <%= link_to "Register", new_user_registration_path, method: :get %>
-    <% end %>
+      <%= login_helper %>
     </div>
-
     <%= yield %>
 
     <%= render "shared/nav", location: 'bottom' %>
