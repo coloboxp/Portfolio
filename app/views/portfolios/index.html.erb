@@ -2,10 +2,11 @@
 
 <!--a href="portfolios/new">New portfolio</a-->
 <%= link_to "Create new portfolio", new_portfolio_path %>
-<% @portfolio_items.each do |item| %>
-  <p><h2><%= link_to item.title, portfolio_show_path(item.id) %></h2></p>
-  <p><%=item.subtitle%></p>
-  <p><%=item.body%></p>
-  <%= image_tag item.thumb_image if !item.thumb_image.nil? %>
-  <%= link_to "Edit", edit_portfolio_path(item.id) %> | <%= link_to 'Delete', portfolio_path(item.id), method: :delete, data: { confirm: 'Are you really sure?' } %></td>
-<% end %>
+<%# @portfolio_items.each do |item| %>
+<!--  <p><h2><%#= link_to item.title, portfolio_show_path(item.id) %></h2></p>-->
+<!--  <p><%#=item.subtitle%></p>-->
+<!--  <p><%#=item.body%></p>-->
+  <%#= image_tag item.thumb_image if !item.thumb_image.nil? %>
+<!--  <%#= link_to "Edit", edit_portfolio_path(item.id) %> | <%#= link_to 'Delete', portfolio_path(item.id), method: :delete, data: { confirm: 'Are you really sure?' } %></td>-->
+<%# end %>
+<%= render partial:'portfolio_item', collection: @portfolio_items %>

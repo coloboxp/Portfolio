@@ -22,4 +22,11 @@ module ApplicationHelper
       (link_to "Register", new_user_registration_path, method: :get)
     end
   end
+
+  def source_helper
+    if session[:source]
+      msg = "Thanks for visiting me from #{session[:source]}"
+      content_tag(:p, msg, class:"source-greeting")
+    end
+  end
 end
