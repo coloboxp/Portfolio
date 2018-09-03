@@ -1,2 +1,5 @@
 <h1>Pages#contact</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+<p>
+  <%= number_to_phone "0918231299" %>
+</p>
+<p>Age <%= distance_of_time_in_words(Time.new(1981,10,26,11,50,00, "-08:00"), Time.now, options = { include_seconds: true }) %></p>
