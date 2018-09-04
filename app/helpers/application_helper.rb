@@ -1,4 +1,6 @@
 module ApplicationHelper
+  before_action :set_copyright
+
   def sample_helper_html
     #This will render the string as HTML
     "<p>Hi there!</p>".html_safe
@@ -28,5 +30,9 @@ module ApplicationHelper
       msg = "Thanks for visiting me from #{session[:source]}"
       content_tag(:p, msg, class:"source-greeting")
     end
+  end
+
+  def copyright_generator
+    @copyright = AlexViewTool::Renderer.copyright "Alejandro", "All rights reserved"
   end
 end
